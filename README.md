@@ -6,16 +6,16 @@ This fork runs locally by default. It includes feed removal, Standard/Deep focus
 
 ## Get this source from GitHub
 
-This extension lives on the dedicated [`tranquil-friend-starter` branch](https://github.com/johnta2000/johnta2000.github.io/tree/tranquil-friend-starter). [Download its ZIP](https://github.com/johnta2000/johnta2000.github.io/archive/refs/heads/tranquil-friend-starter.zip) to install it, or clone this branch to start developing:
+Open the [Tranquil starter repository](https://github.com/johnta2000/tranquil-extension-starter). Click **Fork** to make your own GitHub copy, [download its ZIP](https://github.com/johnta2000/tranquil-extension-starter/archive/refs/heads/main.zip) to install it, or clone it to start developing:
 
 ```sh
-git clone --single-branch --branch tranquil-friend-starter https://github.com/johnta2000/johnta2000.github.io.git tranquil
+git clone https://github.com/johnta2000/tranquil-extension-starter.git tranquil
 cd tranquil
 git remote remove origin
 git switch -c my-changes
 ```
 
-Use the linked branch or ZIP; the repository's default branch contains a different project. After cloning, you can add your own GitHub repository as the new `origin` and push your changes there.
+Both `main` and `friend-starter` contain the ready-to-use starter. After cloning, you can add your own GitHub repository as the new `origin` and push your changes there.
 
 ## Install and use immediately
 
