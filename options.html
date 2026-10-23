@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tranquil insights</title><link rel="stylesheet" href="options.css"></head>
+  <body>
+    <main>
+      <header><div class="mark">◌</div><div><p class="eyebrow">Tranquil</p><h1>Focus &amp; feeds</h1></div></header>
+      <section class="stats" id="analytics" aria-label="Focus statistics">
+        <div><strong id="stat-sessions">—</strong><span>Focus sessions</span></div>
+        <div><strong id="stat-completed">—</strong><span>Sessions completed</span></div>
+        <div><strong id="stat-distractions">—</strong><span>Distractions blocked</span></div>
+        <div><strong id="stat-minutes">—</strong><span>Focused minutes</span></div>
+        <div><strong id="stat-emergencies">—</strong><span>Emergency stops</span></div>
+        <div><strong id="stat-rate">—</strong><span>Completion rate</span></div>
+        <div class="today-stat"><strong id="stat-feed-unblocks">—</strong><span>Feeds opened today</span></div>
+        <div><strong id="stat-feed-unblocks-recent">—</strong><span>Feeds opened · 14 days</span></div>
+        <div><strong id="stat-streak">—</strong><span>Focus-day streak</span></div>
+      </section>
+      <section class="insight-grid">
+        <div class="card">
+          <h2>Recently blocked</h2>
+          <p>The places that most often tried to pull you away.</p>
+          <div id="site-stats" class="ranked-stats"></div>
+        </div>
+        <div class="card">
+          <h2>Recent focus sessions</h2>
+          <p>Your latest sessions across connected browsers.</p>
+          <div id="session-history" class="session-history"></div>
+        </div>
+      </section>
+      <section class="card browser-card">
+        <h2>Across your browsers</h2>
+        <p>Your anonymous Tranquil profile keeps each user's sessions private. Browsers signed into the same browser-sync profile share this identity automatically.</p>
+        <div class="browser-heading"><span>Browser</span><span>Sessions</span><span>Blocked</span></div>
+        <div id="browser-stats" class="browser-stats"></div>
+      </section>
+      <details class="card detail-card" id="usage-analytics">
+        <summary><span><strong>Detailed site usage</strong><small>Open counts, visible time, and recent visits</small></span><b>View details</b></summary>
+        <div class="detail-content">
+          <section>
+            <h2>Site usage</h2>
+            <p>Anonymous opens and visible time on Tranquil-supported sites. Background-tab time is excluded.</p>
+            <div class="usage-heading"><span>Site</span><span>Opens</span><span>Visible time</span><span>Last opened</span></div>
+            <div id="usage-stats" class="usage-stats"></div>
+          </section>
+          <section class="usage-history-section">
+            <h2>Recent site opens</h2>
+            <p>Your latest visits, without URLs, titles, or page content.</p>
+            <div id="usage-history" class="usage-history"></div>
+          </section>
+        </div>
+      </details>
+      <section class="card work-pass-card" id="work-access">
+        <p class="eyebrow">Intentional access</p>
+        <h2>Social work pass</h2>
+        <p id="shared-allowance-status" role="status"></p>
+        <p>Open one specific page on a site set to “Work pass required.” Feeds and unrelated pages remain blocked.</p>
+        <div id="work-pass-active" class="work-pass-active" hidden>
+          <strong id="work-pass-purpose"></strong>
+          <span id="work-pass-time"></span>
+          <button id="end-work-pass" type="button">End pass</button>
+        </div>
+        <form id="work-pass-form" class="work-pass-form">
+          <label>Page you need<input id="work-pass-url" type="url" required placeholder="https://www.youtube.com/watch?v=…"></label>
+          <label>What are you accomplishing?<input id="work-pass-reason" type="text" required minlength="5" maxlength="160" placeholder="Review the launch interview"></label>
+          <label>Access time<select id="work-pass-duration"><option value="5" selected>5 minutes</option><option value="10">10 minutes</option></select></label>
+          <button type="submit">Start work pass</button>
+          <span id="work-pass-status" role="status"></span>
+        </form>
+      </section>
+      <section class="card account-card" id="account">
+        <div>
+          <p class="eyebrow">Account sync</p>
+          <h2 id="account-title">Connect your Tranquil account</h2>
+          <p id="account-description">Sign in with Clerk once to keep your history when you update the extension or use another browser.</p>
+        </div>
+        <button id="connect-account" type="button">Connect account</button>
+        <span id="account-status" role="status"></span>
+      </section>
+      <section class="card" id="settings">
+        <h2>Settings</h2>
+        <p>Adjust Tranquil's background protections and intentional exceptions.</p>
+        <div class="baseline-setting">
+          <div><strong>Facebook Baseline Protection</strong><span>Groups and useful tools remain available. Reels, Watch, Stories, ads, recommendations, non-group Home posts, and autoplay are always removed. When infinite feeds are open, Facebook Home shows verified Group posts only.</span></div>
+          <b>Always on</b>
+        </div>
+        <div class="setting-divider policy-settings">
+          <h3>Site access policies</h3>
+          <p>Choose whether each service only loses its feed, requires a temporary page-level work pass, or stays fully blocked.</p>
+          <div id="site-policy-list" class="policy-list"></div>
+        </div>
+        <div class="option-setting">
+          <div><strong>Attention Guard</strong><span>Automatically closes excessive social browsing after five concentrated minutes.</span></div>
+          <label class="switch"><input type="checkbox" id="guard-toggle"><span></span></label>
+        </div>
+        <div class="setting-divider">
+          <h3>Feed exceptions</h3>
+          <p>Add one URL prefix per line. A matching feed remains visible while other feeds on that service stay removed.</p>
+          <textarea id="exceptions" spellcheck="false" placeholder="reddit.com/r/productivity&#10;x.com/home"></textarea>
+          <div class="actions"><span id="save-status" role="status"></span><button id="save">Save settings</button></div>
+        </div>
+      </section>
+      <section class="card">
+        <h2>Emergency-access history</h2>
+        <p>Stored only in this browser. This small audit trail makes the break-glass feature deliberate.</p>
+        <div id="history" class="history"></div>
+      </section>
+      <p class="privacy">Focus and site-level usage data sync through Tranquil's dedicated Convex database. Exact URLs, page titles, page content, and emergency reasons are never sent.</p>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>

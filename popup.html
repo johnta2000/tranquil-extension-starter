@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tranquil</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="header">
+        <div class="brand-mark" aria-hidden="true">◌</div>
+        <div>
+          <p class="brand">Tranquil</p>
+          <p class="tagline">A quieter internet.</p>
+        </div>
+      </header>
+
+      <section class="focus-card" id="focus-card">
+        <div id="idle-state">
+          <p class="eyebrow">Quick focus</p>
+          <h1>Make room for one thing.</h1>
+          <p class="description">Selected sites stay fully blocked for the duration you choose.</p>
+          <div class="focus-controls">
+            <label class="control-label" for="duration-input"><span>Session length</span>
+              <span class="duration-field"><input id="duration-input" type="number" min="5" max="240" step="1" value="30" inputmode="numeric" /><b>min</b></span>
+            </label>
+            <label class="control-label" for="focus-level"><span>Focus mode</span>
+              <select id="focus-level" aria-describedby="mode-help">
+                <option value="standard">Standard — selected sites</option>
+                <option value="deep">Deep — selected sites + Gmail</option>
+              </select>
+            </label>
+          </div>
+          <p class="mode-help" id="mode-help">Deep adds Gmail to the sites selected below.</p>
+          <button class="primary" id="start-session">Start 30 min session <span>→</span></button>
+        </div>
+
+        <div id="active-state" hidden>
+          <p class="eyebrow active-label"><span class="pulse"></span><span id="active-label-text">Focus session active</span></p>
+          <div class="timer" id="timer">30:00</div>
+          <p class="description" id="active-description">Your selected distractions are out of reach.</p>
+          <div class="progress"><span id="progress-bar"></span></div>
+
+          <button class="emergency-link" id="show-emergency">Need emergency access?</button>
+          <form class="emergency-form" id="emergency-form" hidden>
+            <label for="emergency-reason">Why can’t this wait?</label>
+            <textarea id="emergency-reason" maxlength="280" placeholder="Briefly describe the emergency…"></textarea>
+            <button class="secondary" type="submit">Begin 30-second pause</button>
+          </form>
+          <div class="emergency-confirm" id="emergency-confirm" hidden>
+            <p id="emergency-wait">Pause for 30 seconds.</p>
+            <div id="emergency-challenge" hidden>
+              <label for="emergency-phrase-input">To end this session, type this exactly:</label>
+              <code id="emergency-phrase"></code>
+              <input id="emergency-phrase-input" type="text" autocomplete="off" spellcheck="false" />
+              <button class="secondary" id="confirm-emergency" type="button" disabled>End focus session</button>
+            </div>
+          </div>
+        </div>
+        <p class="error" id="error" role="alert" hidden></p>
+      </section>
+
+      <section class="settings">
+        <div class="setting-row lead-setting">
+          <div>
+            <h2>Remove infinite feeds</h2>
+            <p>Keep useful pages, lose the scroll.</p>
+          </div>
+          <button class="feed-toggle" id="feed-toggle" type="button" aria-pressed="true" aria-label="Remove infinite feeds">
+            <span class="feed-toggle-copy" id="feed-toggle-copy"></span>
+            <span class="feed-toggle-track" aria-hidden="true"><i></i></span>
+          </button>
+        </div>
+        <div class="site-list" id="site-list" aria-label="Controlled sites"></div>
+        <div class="feed-pause site-pause" id="site-pause" hidden>
+          <div>
+            <strong id="site-pause-title">Pause before opening this feed.</strong>
+            <p id="site-pause-copy">Wait a moment, then choose deliberately.</p>
+          </div>
+          <div class="feed-pause-actions">
+            <button id="cancel-site-disable" type="button">Keep blocked</button>
+            <button class="confirm-access" id="confirm-site-disable" type="button" disabled>Allow feed</button>
+          </div>
+        </div>
+        <div class="daily-counter" aria-live="polite">
+          <span>Feeds opened today</span>
+          <strong id="feed-unblocks-today">—</strong>
+        </div>
+        <div class="settings-footer">
+          <button id="view-analytics" type="button">Analytics</button>
+          <button id="view-settings" type="button">Settings</button>
+        </div>
+      </section>
+      <footer class="version-footer" aria-label="Extension version">
+        <span>Tranquil</span>
+        <span id="version-label">Version unavailable</span>
+      </footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

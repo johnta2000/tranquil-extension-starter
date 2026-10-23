@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "convex:dev": "convex dev",
+    "convex:deploy": "convex deploy",
+    "test": "node tests/background.test.mjs && node tests/ui-structure.test.mjs && node tests/linkedin-links.test.mjs && node tests/linkedin-content.test.mjs"
+  },
+  "dependencies": {
+    "convex": "^1.41.0"
+  },
+  "devDependencies": {
+    "convex-test": "^0.0.58",
+    "typescript": "^7.0.2",
+    "vitest": "^3.2.7"
+  }
+}

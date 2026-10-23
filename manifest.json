@@ -1,0 +1,70 @@
+{
+  "manifest_version": 3,
+  "name": "Tranquil \u2014 Feed & Focus Blocker",
+  "version": "2.21.3",
+  "description": "Remove distracting feeds, run locked focus sessions, and track avoided distractions.",
+  "permissions": [
+    "alarms",
+    "declarativeNetRequest",
+    "scripting",
+    "storage",
+    "tabs",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "*://*.threads.com/*",
+    "*://*.instagram.com/*",
+    "*://*.facebook.com/*",
+    "*://*.x.com/*",
+    "*://*.twitter.com/*",
+    "*://*.linkedin.com/*",
+    "*://*.reddit.com/*",
+    "*://*.youtube.com/*",
+    "*://*.tiktok.com/*",
+    "https://bookface.ycombinator.com/*",
+    "https://mail.google.com/*",
+    "https://blessed-bee-408.convex.cloud/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Tranquil",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.threads.com/*",
+        "*://*.instagram.com/*",
+        "*://*.facebook.com/*",
+        "*://*.x.com/*",
+        "*://*.twitter.com/*",
+        "*://*.linkedin.com/*",
+        "*://*.reddit.com/*",
+        "*://*.youtube.com/*",
+        "*://*.tiktok.com/*",
+        "https://bookface.ycombinator.com/*"
+      ],
+      "js": [
+        "linkedin-links.js",
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "blocked.html",
+        "blocked.css",
+        "blocked.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
