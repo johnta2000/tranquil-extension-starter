@@ -1,7 +1,8 @@
 import "./linkedin-links.js";
+import { CONFIG } from "./config.js";
 
-const CONVEX_URL = "https://blessed-bee-408.convex.cloud";
-const ACCOUNT_CONNECT_URL = "https://www.john-ta.com/tools/tranquil-connect/";
+const CONVEX_URL = CONFIG.convexUrl.replace(/\/$/, "");
+const ACCOUNT_CONNECT_URL = CONFIG.accountConnectUrl;
 const DEFAULT_SESSION_MINUTES = 30;
 const MIN_SESSION_MINUTES = 5;
 const MAX_SESSION_MINUTES = 240;
@@ -367,6 +368,7 @@ async function clearBlockedReturnUrl(tabId) {
 }
 
 async function convexCall(kind, path, args) {
+  if (!CONVEX_URL) throw new Error("Cloud sync is off. Configure your own Convex deployment in config.js to enable it.");
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 5000);
   try {
@@ -444,6 +446,7 @@ function randomHex(byteLength) {
 }
 
 async function startAccountLink() {
+  if (!CONVEX_URL || !ACCOUNT_CONNECT_URL) throw new Error("Account linking is not configured for this fork. Local blocking works without sign-in.");
   const identity = await ensureClientRegistration();
   const code = randomHex(24);
   const proposedAccessToken = randomHex(48);

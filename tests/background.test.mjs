@@ -1,4 +1,8 @@
 import assert from "node:assert/strict";
+import { CONFIG } from "../config.js";
+// All cloud responses in this suite are mocked; no network calls are made.
+CONFIG.convexUrl = "https://test.convex.cloud";
+CONFIG.accountConnectUrl = "https://example.test/tranquil-connect/";
 let fakeNow=1_800_000_000_000;
 Date.now=()=>fakeNow;
 const stored={};

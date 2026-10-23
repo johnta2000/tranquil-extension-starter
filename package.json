@@ -4,7 +4,8 @@
   "scripts": {
     "convex:dev": "convex dev",
     "convex:deploy": "convex deploy",
-    "test": "node tests/background.test.mjs && node tests/ui-structure.test.mjs && node tests/linkedin-links.test.mjs && node tests/linkedin-content.test.mjs"
+    "test": "node tests/local-mode.test.mjs && node tests/background.test.mjs && node tests/ui-structure.test.mjs && node tests/linkedin-links.test.mjs && node tests/linkedin-content.test.mjs",
+    "test:backend": "vitest run tests/access.test.ts tests/sessions.test.ts tests/usage.test.ts"
   },
   "dependencies": {
     "convex": "^1.41.0"

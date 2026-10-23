@@ -22,8 +22,7 @@
     "*://*.youtube.com/*",
     "*://*.tiktok.com/*",
     "https://bookface.ycombinator.com/*",
-    "https://mail.google.com/*",
-    "https://blessed-bee-408.convex.cloud/*"
+    "https://mail.google.com/*"
   ],
   "background": {
     "service_worker": "background.js",
