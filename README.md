@@ -4,6 +4,19 @@ A personal copy of Tranquil v2.21.3. The extension uses **JavaScript, HTML, and 
 
 This fork runs locally by default. It includes feed removal, Standard/Deep focus sessions, attention guard, deliberate feed-unlock pauses, work passes, and local analytics. It does not connect to John's database, website, Clerk application, or account. No credentials, browser data, or `.env.local` files are included.
 
+## Get this source from GitHub
+
+This extension lives on the dedicated [`tranquil-friend-starter` branch](https://github.com/johnta2000/johnta2000.github.io/tree/tranquil-friend-starter). [Download its ZIP](https://github.com/johnta2000/johnta2000.github.io/archive/refs/heads/tranquil-friend-starter.zip) to install it, or clone this branch to start developing:
+
+```sh
+git clone --single-branch --branch tranquil-friend-starter https://github.com/johnta2000/johnta2000.github.io.git tranquil
+cd tranquil
+git remote remove origin
+git switch -c my-changes
+```
+
+Use the linked branch or ZIP; the repository's default branch contains a different project. After cloning, you can add your own GitHub repository as the new `origin` and push your changes there.
+
 ## Install and use immediately
 
 1. Extract the starter ZIP to a permanent folder, or clone the Git bundle below.
@@ -51,7 +64,7 @@ git add .
 git commit -m "Describe my change"
 ```
 
-To collaborate online, create your own private GitHub repository, set its URL as `origin`, and push your branch. This handoff has not been published to GitHub. A **branch** is your line of development; a **commit** is a saved change; a **fork** is your independent copy of the project.
+To collaborate online, create your own GitHub repository, set its URL as `origin`, and push your branch. A **branch** is your line of development; a **commit** is a saved change; a **fork** is your independent copy of the project.
 
 ## Where to change things
 
